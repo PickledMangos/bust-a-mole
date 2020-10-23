@@ -15,8 +15,7 @@ function App() {
   return (
     <div className="App">
         <div className="StartGameButton" onClick={handleStartGame}>
-            <StartGameScreen></StartGameScreen>
-            <MainGameScreen></MainGameScreen>
+            {!isGameStart ? <StartGameScreen /> : <MainGameScreen />}
         </div>
     </div>
   );
