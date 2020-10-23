@@ -7,5 +7,5 @@ export const StartGameScreen = () => {
         <div className="StartGameScreen">
             <p>Click to start</p>
         </div>
-    )
+    );
 };

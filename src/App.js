@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { StartGameScreen } from "./components/StartGameScreen/StartGameScreen.jsx";
+import { MainGameScreen } from "./components/MainGameScreen/MainGameScreen.jsx";
 import './App.css';
 
 function App() {
@@ -14,8 +15,8 @@ function App() {
   return (
     <div className="App">
         <div className="StartGameButton" onClick={handleStartGame}>
-            <StartGameScreen>
-            </StartGameScreen>
+            <StartGameScreen></StartGameScreen>
+            <MainGameScreen></MainGameScreen>
         </div>
     </div>
   );
