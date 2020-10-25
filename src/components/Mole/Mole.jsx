@@ -4,8 +4,8 @@ import moleImage from './mole.png';
 import moleHole from './oval.gif';
 
 export const Mole = (props) => {
-  const isHiddenInitalValue = props.isHidden || false;
-  const [isHidden, setIsHidden] = useState(isHiddenInitalValue);
+  const isHiddenInitialValue = props.isHidden || false;
+  const [isHidden, setIsHidden] = useState(isHiddenInitialValue);
   const clickHandler = () => (setIsHidden(true));
   return (
       <div className="mole">
