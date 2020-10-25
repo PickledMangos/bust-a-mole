@@ -4,17 +4,17 @@ import './MainGameScreen.css';
 
 export const MainGameScreen = (props) => {
   const moles = gameInit(9);
-  console.log(moles);
-  console.log(moles.length);
-    return (
-     <div className="MainGameScreen">
-       <div className="game__field">
-         {moles.map(mole => {
-           return mole;
-         })}
-       </div>
+  const showMoleIndex = pickAMoleToShow(moles.length);
+  moles[showMoleIndex] = <Mole></Mole>;
+  return (
+   <div className="MainGameScreen">
+     <div className="game__field">
+       {moles.map(mole => {
+         return mole;
+       })}
      </div>
-    );
+   </div>
+  );
 };
 
 function gameInit (numOfHoles) {
@@ -24,4 +24,10 @@ function gameInit (numOfHoles) {
     molesArray.push(<Mole isHidden={true}></Mole>);
   }
   return molesArray;
+}
+
+function pickAMoleToShow(totalMoles) {
+  const min = Math.ceil(0);
+  const max = Math.floor(totalMoles-1);
+  return Math.floor(Math.random() * (max - min + 1) + min);
 }
