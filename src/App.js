@@ -11,11 +11,13 @@ function App() {
 
     const handleStartGame = () => {
         setIsGameStart(true);
+        // start the timer too
+
     };
 
   return (
     <div className="App">
-      <Header/>
+      <Header blah={"test"}></Header>
         <div className="StartGameButton" onClick={handleStartGame}>
             {!isGameStart ? <StartGameScreen /> : <MainGameScreen />}
         </div>
