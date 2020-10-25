@@ -5,8 +5,8 @@ import './MainGameScreen.css';
 export const MainGameScreen = (props) => {
     return (
      <div className="MainGameScreen">
-         <Mole>
-         </Mole>
+         <Mole></Mole>
+         <Mole isHidden={true}></Mole>
      </div>
     );
 };

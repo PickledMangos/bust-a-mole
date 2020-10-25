@@ -1,15 +1,14 @@
 import React from 'react';
 import './Mole.css';
 import moleImage from './mole.png';
+import moleHole from './oval.gif';
 
 export const Mole = (props) => {
-    // const { isHidden } = props;
-    // const hidden = isHidden ? 'mole__hidden' : '';
+    const { isHidden } = props;
     return (
         <div className="mole">
             <div className="mole__hole">
-                {/*<img className={`mole__image ${hidden}`} src='mole.png'></img>*/}
-                <img src={moleImage} alt='mole'></img>
+                <img src={isHidden ? moleHole : moleImage} alt='mole'></img>
             </div>
         </div>
     );
