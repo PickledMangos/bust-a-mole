@@ -2,12 +2,12 @@ import React from 'react';
 import './Header.css';
 
 export const Header = (props) => {
-  const { blah } = props.blah;
-  console.log('blah? ', blah);
+  const score = props.score;
+  
   return (
     <div className="Header">
-      <div>Clock goes here... {`${blah}`}</div>
-      <div>Score</div>
+      <div>Clock goes here...</div>
+      <div>Score:  {`${score}`}</div>
     </div>
   );
 };

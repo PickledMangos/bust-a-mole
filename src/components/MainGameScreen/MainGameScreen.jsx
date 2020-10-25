@@ -3,7 +3,9 @@ import { Mole } from "../Mole/Mole";
 import './MainGameScreen.css';
 
 export const MainGameScreen = (props) => {
-  const moles = getAnArrayOfMoles(9);
+  const [score, setScore] = props.score;
+  const moles = getAnArrayOfMoles(9, [score, setScore]);
+
   return (
    <div className="MainGameScreen">
      <div className="game__field">
@@ -15,9 +17,9 @@ export const MainGameScreen = (props) => {
   );
 };
 
-function getAnArrayOfMoles (numOfHoles) {
-  const moleShown = <Mole></Mole>;
-  const moleHidden = <Mole isHidden={true}></Mole>;
+function getAnArrayOfMoles (numOfHoles, [score, setScore]) {
+  const moleShown = <Mole score={[score, setScore]}></Mole>;
+  const moleHidden = <Mole isHidden={true} score={[score, setScore]}></Mole>;
   const molesArray = [];
   const showMoleIndex = pickAMoleToShow(numOfHoles);
   for (let i = 0; i < numOfHoles; i++) {

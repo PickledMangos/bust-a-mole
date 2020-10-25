@@ -7,19 +7,22 @@ import './App.css';
 function App() {
 
     const [isGameStart, setIsGameStart] = useState(false);
-    console.log('is game started?', isGameStart);
+    const [score, setScore] = useState(0);
 
     const handleStartGame = () => {
         setIsGameStart(true);
-        // start the timer too
-
+        // TODO: start the timer too
     };
+
+    const handleScoreKeeping = () => {
+      setScore(score + 1);
+    }
 
   return (
     <div className="App">
-      <Header blah={"test"}></Header>
+      <Header score={score} ></Header>
         <div className="StartGameButton" onClick={handleStartGame}>
-            {!isGameStart ? <StartGameScreen /> : <MainGameScreen />}
+            {!isGameStart ? <StartGameScreen /> : <MainGameScreen score={[score, setScore]}/>}
         </div>
     </div>
   );
