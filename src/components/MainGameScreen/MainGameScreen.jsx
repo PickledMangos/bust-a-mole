@@ -3,7 +3,7 @@ import { Mole } from "../Mole/Mole";
 import './MainGameScreen.css';
 
 export const MainGameScreen = (props) => {
-  const moles = gameInit(9);
+  const moles = getAnArrayOfMoles(9);
   return (
    <div className="MainGameScreen">
      <div className="game__field">
@@ -15,7 +15,7 @@ export const MainGameScreen = (props) => {
   );
 };
 
-function gameInit (numOfHoles) {
+function getAnArrayOfMoles (numOfHoles) {
   const moleShown = <Mole></Mole>;
   const moleHidden = <Mole isHidden={true}></Mole>;
   const molesArray = [];
