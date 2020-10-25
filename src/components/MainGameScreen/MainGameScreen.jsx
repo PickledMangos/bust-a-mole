@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Mole } from "../Mole/Mole";
 import './MainGameScreen.css';
 
 export const MainGameScreen = (props) => {
   const [score, setScore] = props.score;
-  const moles = getAnArrayOfMoles(9, [score, setScore]);
+  let moles = getAnArrayOfMoles(9, [score, setScore]);
+  // TODO: make timer work (ex. wait 5 seconds, then update moles
+  // moles = getAnArrayOfMoles(9, [score, setScore]);
 
   return (
    <div className="MainGameScreen">
@@ -18,8 +20,8 @@ export const MainGameScreen = (props) => {
 };
 
 function getAnArrayOfMoles (numOfHoles, [score, setScore]) {
-  const moleShown = <Mole score={[score, setScore]}></Mole>;
-  const moleHidden = <Mole isHidden={true} score={[score, setScore]}></Mole>;
+  const moleShown = <Mole score={[score, setScore]} deathTimer={3000}></Mole>;
+  const moleHidden = <Mole isHidden={true} score={[score, setScore]} ></Mole>;
   const molesArray = [];
   const showMoleIndex = pickAMoleToShow(numOfHoles);
   for (let i = 0; i < numOfHoles; i++) {

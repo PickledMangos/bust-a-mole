@@ -13,6 +13,11 @@ export const Mole = (props) => {
     setIsHidden(true);
   };
 
+  const fn = () => {
+      setIsHidden(true);
+  }
+  setTimeout(fn, props.deathTimer)
+
   return (
       <div className="mole">
           <div className={`mole__hole${isHidden ? '-hidden' : '-show'}`} onClick={clickHandler}>
