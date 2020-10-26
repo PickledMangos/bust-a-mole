@@ -6,10 +6,6 @@ import moleHole from './oval.gif';
 export const Mole = (props) => {
   const isHiddenInitialValue = props.isHidden || false;
   const [isHidden, setIsHidden] = useState(isHiddenInitialValue);
-
-  const isNextValue = props.isNext || false;
-  const [isNext, setIsNext] = useState(isNextValue);
-
   const [score, setScore] = props.score;
   
   const clickHandler = () => {
@@ -18,14 +14,8 @@ export const Mole = (props) => {
   };
 
   const expireTimer = () => {
-    if (isNext) {
-      // Mole is hidden now, but is next to show.
-      setIsHidden(false);  
-      setIsNext(false);
-    } else {
-      // Mole is shown now, but needs to hide.
-      setIsHidden(true);
-    }
+    // Mole is shown now, but needs to hide.
+    setIsHidden(true);
   };
 
   setTimeout(expireTimer, props.timer)

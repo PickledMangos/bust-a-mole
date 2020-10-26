@@ -12,7 +12,7 @@ export const MainGameScreen = (props) => {
    <div className="MainGameScreen">
      <div className="game__field">
        {moles.map((mole, key) => {
-        return <Mole key={key} index={key} score={[score, setScore]} timer={mole.timer} isHidden={mole.isHidden} isNext={mole.isNext} />
+        return <Mole key={key} index={key} score={[score, setScore]} timer={mole.timer} isHidden={mole.isHidden} />
        })}
      </div>
    </div>
@@ -22,12 +22,10 @@ export const MainGameScreen = (props) => {
 function getAnArrayOfMoles (numOfHoles, [score, setScore]) {
   const moleShown = {
     isHidden: false,
-    isNext: false,
     timer: 3000
   };
   const moleHidden = {
     isHidden: true,
-    isNext: false,
     timer: null
   };
   const molesArray = [];
@@ -38,7 +36,6 @@ function getAnArrayOfMoles (numOfHoles, [score, setScore]) {
   for (let i = 0; i < numOfHoles; i++) {
     const mole = i === showMoleIndex ? moleShown : moleHidden;
     if (i === nextShowMoleIndex) {
-      mole.isNext = true;
       mole.timer = 5000;
     } 
     molesArray.push(mole);
