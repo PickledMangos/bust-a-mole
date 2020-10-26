@@ -12,8 +12,7 @@ export const MainGameScreen = (props) => {
    <div className="MainGameScreen">
      <div className="game__field">
        {moles.map((mole, key) => {
-        //  return mole;
-        return <Mole key={key} index={key} score={[score, setScore]} deathTimer={mole.deathTimer} isHidden={mole.isHidden} />
+        return <Mole key={key} index={key} score={[score, setScore]} timer={mole.timer} isHidden={mole.isHidden} isNext={mole.isNext} />
        })}
      </div>
    </div>
@@ -21,27 +20,38 @@ export const MainGameScreen = (props) => {
 };
 
 function getAnArrayOfMoles (numOfHoles, [score, setScore]) {
-  // const moleShown = <Mole score={[score, setScore]} deathTimer={3000}></Mole>;
-  // const moleHidden = <Mole isHidden={true} score={[score, setScore]} ></Mole>;
   const moleShown = {
     isHidden: false,
-    deathTimer: 3000
+    isNext: false,
+    timer: 3000
   };
   const moleHidden = {
     isHidden: true,
-    deathTimer: null
+    isNext: false,
+    timer: null
   };
   const molesArray = [];
   const showMoleIndex = pickAMoleToShow(numOfHoles);
+
+  let nextShowMoleIndex = pickAMoleToShow(numOfHoles, showMoleIndex);
+
   for (let i = 0; i < numOfHoles; i++) {
     const mole = i === showMoleIndex ? moleShown : moleHidden;
+    if (i === nextShowMoleIndex) {
+      mole.isNext = true;
+      mole.timer = 5000;
+    } 
     molesArray.push(mole);
   }
   return molesArray;
 }
 
-function pickAMoleToShow(totalMoles) {
+function pickAMoleToShow(totalMoles, excludedNumber) {
   const min = Math.ceil(0);
   const max = Math.floor(totalMoles-1);
-  return Math.floor(Math.random() * (max - min + 1) + min);
+  let pickANumber = null; 
+  while(pickANumber === null || pickANumber === excludedNumber) {
+    pickANumber = Math.floor(Math.random() * (max - min + 1) + min);
+  }
+  return pickANumber;
 }
