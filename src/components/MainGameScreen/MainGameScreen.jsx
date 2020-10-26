@@ -11,7 +11,7 @@ export const MainGameScreen = (props) => {
   return (
    <div className="MainGameScreen">
      <div className="game__field">
-       {moles.map(mole => {
+       {moles.map(mole, index => {
          return mole;
        })}
      </div>
