@@ -8,11 +8,16 @@ export const MainGameScreen = (props) => {
   const [seconds, setSeconds] = useState(0);
   const [isActive, setIsActive] = useState(true)
   const [moleInterval, setMoleInterval] = useState();
-
+  const [gameBoard, setGameBoard] = useState([]);
 
   let moles = getAnArrayOfMoles(9, [score, setScore]);
   // TODO: make timer work (ex. wait 5 seconds, then update moles
   // moles = getAnArrayOfMoles(9, [score, setScore]);
+
+  function updateGameBoard (oldBoardState) {
+    const newGameBoard = setGameBoard(...oldBoardState);
+    return newGameBoard;
+  }
 
   function toggle() { // basic toggle switch for pause / start
     setIsActive(!isActive);
@@ -27,18 +32,20 @@ export const MainGameScreen = (props) => {
   const gameEndsInSeconds = 60;
 
   function tick() { // every second, this function is called
-    console.log("tick!")
+    updateGameBoard(gameBoard);
+    console.log("tick!");
     // getAnArrayOfMoles(9, [score, setScore]);
   }
 
   useEffect(() => {
     let interval = null;
+    setGameBoard(moles);
     if (isActive) {
       interval = setInterval(() => {
         setSeconds(seconds => (seconds + 1));
         tick();
       }, 1000)
-    } else if ((!isActive && seconds !== 0) || (seconds >= gameEndsInSeconds)) {
+    } else if ((!isActive && seconds !== 0)) {
       clearInterval(interval);
       // setIsActive(false);
     }
@@ -55,7 +62,7 @@ export const MainGameScreen = (props) => {
      <div>Seconds: {seconds}</div>
       <div className="game__field">
         {isActive 
-          ? moles.map((mole, key) => {
+          ? gameBoard.map((mole, key) => {
               return (
                 <Mole 
                   key={key} 
