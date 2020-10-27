@@ -1,15 +1,41 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Mole } from "../Mole/Mole";
 import './MainGameScreen.css';
 
 export const MainGameScreen = (props) => {
   const [score, setScore] = props.score;
+  const [seconds, setSeconds] = useState(0);
+  const [isActive, setIsActive] = useState(true)
   let moles = getAnArrayOfMoles(9, [score, setScore]);
   // TODO: make timer work (ex. wait 5 seconds, then update moles
   // moles = getAnArrayOfMoles(9, [score, setScore]);
 
+  function toggle() { // basic toggle switch for pause / start
+    setIsActive(!isActive);
+  }
+
+  function reset() { // add more functionality for game board reset
+    setSeconds(0);
+    setIsActive(false);
+  }
+
+  useEffect(() => {
+    let interval = null;
+    if (isActive) {
+      interval = setInterval(() => {
+        setSeconds(seconds => (seconds + 1));
+      }, 1000)
+    } else if (!isActive && seconds !== 0) {
+      clearInterval(interval);
+    }
+    return () => {
+      clearInterval(interval)
+    }
+  }, [isActive, seconds])
+
   return (
    <div className="MainGameScreen">
+     <div>Seconds: {seconds}</div>
      <div className="game__field">
        {moles.map((mole, key) => {
         return <Mole key={key} index={key} score={[score, setScore]} timer={mole.timer} isHidden={mole.isHidden} />
@@ -18,6 +44,8 @@ export const MainGameScreen = (props) => {
    </div>
   );
 };
+
+
 
 function getAnArrayOfMoles (numOfHoles, [score, setScore]) {
   const moleShown = {
@@ -31,19 +59,14 @@ function getAnArrayOfMoles (numOfHoles, [score, setScore]) {
   const molesArray = [];
   const showMoleIndex = pickAMoleToShow(numOfHoles);
 
-  let nextShowMoleIndex = pickAMoleToShow(numOfHoles, showMoleIndex);
-
   for (let i = 0; i < numOfHoles; i++) {
-    const mole = i === showMoleIndex ? moleShown : moleHidden;
-    if (i === nextShowMoleIndex) {
-      mole.timer = 5000;
-    } 
+    const mole = i === showMoleIndex ? moleShown : moleHidden; 
     molesArray.push(mole);
   }
   return molesArray;
 }
 
-function pickAMoleToShow(totalMoles, excludedNumber) {
+function pickAMoleToShow(totalMoles, excludedNumber = -1) {
   const min = Math.ceil(0);
   const max = Math.floor(totalMoles-1);
   let pickANumber = null; 
