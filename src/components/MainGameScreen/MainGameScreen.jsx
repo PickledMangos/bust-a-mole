@@ -4,10 +4,11 @@ import './MainGameScreen.css';
 
 export const MainGameScreen = (props) => {
   const [score, setScore] = props.score;
+  
   const [seconds, setSeconds] = useState(0);
   const [isActive, setIsActive] = useState(true)
-
   const [moleInterval, setMoleInterval] = useState();
+
 
   let moles = getAnArrayOfMoles(9, [score, setScore]);
   // TODO: make timer work (ex. wait 5 seconds, then update moles
@@ -24,42 +25,54 @@ export const MainGameScreen = (props) => {
 
   const moleGenerationInterval = 5;
   const gameEndsInSeconds = 60;
-  // while (seconds < gameEndsInSeconds) {
-    
-  // }
 
+  function tick() { // every second, this function is called
+    console.log("tick!")
+    // getAnArrayOfMoles(9, [score, setScore]);
+  }
 
   useEffect(() => {
     let interval = null;
     if (isActive) {
       interval = setInterval(() => {
         setSeconds(seconds => (seconds + 1));
+        tick();
       }, 1000)
-    } else if (!isActive && seconds !== 0) {
+    } else if ((!isActive && seconds !== 0) || (seconds >= gameEndsInSeconds)) {
       clearInterval(interval);
+      // setIsActive(false);
     }
     return () => {
       clearInterval(interval)
+      // setIsActive(false);
     }
   }, [isActive, seconds])
+
+  
 
   return (
    <div className="MainGameScreen">
      <div>Seconds: {seconds}</div>
       <div className="game__field">
-
-        {seconds < gameEndsInSeconds ? 
-        moles.map((mole, key) => {
-          return <Mole key={key} index={key} score={[score, setScore]} timer={mole.timer} isHidden={mole.isHidden} />
-        }) : "Game Over, man"}
+        {isActive 
+          ? moles.map((mole, key) => {
+              return (
+                <Mole 
+                  key={key} 
+                  index={key} 
+                  score={[score, setScore]} 
+                  timer={mole.timer} 
+                  isHidden={mole.isHidden} 
+                /> 
+              )
+          }
+            ) // closes map 
+              : "Game Over, man"
+        }
       </div>
-     
-      
    </div>
   );
 };
-
-
 
 function getAnArrayOfMoles (numOfHoles, [score, setScore]) {
   const moleShown = {
