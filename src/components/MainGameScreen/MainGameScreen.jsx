@@ -6,6 +6,9 @@ export const MainGameScreen = (props) => {
   const [score, setScore] = props.score;
   const [seconds, setSeconds] = useState(0);
   const [isActive, setIsActive] = useState(true)
+
+  const [moleInterval, setMoleInterval] = useState();
+
   let moles = getAnArrayOfMoles(9, [score, setScore]);
   // TODO: make timer work (ex. wait 5 seconds, then update moles
   // moles = getAnArrayOfMoles(9, [score, setScore]);
@@ -18,6 +21,13 @@ export const MainGameScreen = (props) => {
     setSeconds(0);
     setIsActive(false);
   }
+
+  const moleGenerationInterval = 5;
+  const gameEndsInSeconds = 60;
+  // while (seconds < gameEndsInSeconds) {
+    
+  // }
+
 
   useEffect(() => {
     let interval = null;
@@ -36,11 +46,15 @@ export const MainGameScreen = (props) => {
   return (
    <div className="MainGameScreen">
      <div>Seconds: {seconds}</div>
-     <div className="game__field">
-       {moles.map((mole, key) => {
-        return <Mole key={key} index={key} score={[score, setScore]} timer={mole.timer} isHidden={mole.isHidden} />
-       })}
-     </div>
+      <div className="game__field">
+
+        {seconds < gameEndsInSeconds ? 
+        moles.map((mole, key) => {
+          return <Mole key={key} index={key} score={[score, setScore]} timer={mole.timer} isHidden={mole.isHidden} />
+        }) : "Game Over, man"}
+      </div>
+     
+      
    </div>
   );
 };
