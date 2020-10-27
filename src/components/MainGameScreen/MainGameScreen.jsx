@@ -55,8 +55,6 @@ export const MainGameScreen = (props) => {
     }
   }, [isActive, seconds])
 
-  
-
   return (
    <div className="MainGameScreen">
      <div>Seconds: {seconds}</div>
