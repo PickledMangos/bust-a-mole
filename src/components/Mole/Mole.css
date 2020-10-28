@@ -1,7 +1,20 @@
 .mole__hole-hidden {
-  
+  height:100px;
+  width:100px;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
 }
 
 .mole__hole-show {
+  height:100px;
+  width:100px;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+}
 
+img {
+  max-height: 100px;
+  max-width: 100px;
 }
