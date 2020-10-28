@@ -3,27 +3,28 @@ import { Mole } from "../Mole/Mole";
 import './MainGameScreen.css';
 
 export const MainGameScreen = (props) => {
+  const moleGenerationInterval = 5;
+  const gameEndsInSeconds = 60;
+
   const [score, setScore] = props.score;
   
   const [seconds, setSeconds] = useState(0);
   const [isActive, setIsActive] = useState(true)
-  const [moleInterval, setMoleInterval] = useState();
+  const [moleInterval, setMoleInterval] = useState(getMoleInterval(moleGenerationInterval));
   const [gameBoard, setGameBoard] = useState(getAnArrayOfMoles(9));
 
-  const moleGenerationInterval = 5;
-  const gameEndsInSeconds = 60;
-
-  function tick() { // every second, this function is called
-    // console.log("tick!");
-    if (seconds % 5 === 0 && seconds !== 0) {
-      console.log('seconds divisible by 5: ', seconds);
-      // console.log('current gameboard (moles)', gameBoard);
+  function tick() {
+    if (seconds % moleInterval === 0 && seconds !== 0) {
+      // Update moles
       const moles = getAnArrayOfMoles(9);
-      // console.log('new moles: ', moles);
       setGameBoard(moles);
+
+      // Update internal moles appear
+      setMoleInterval(getMoleInterval(moleGenerationInterval));
+
+      // Reset gameboard and display, though this may be causing a memory leak
       setIsActive(false);
       setIsActive(true);
-      // console.log('updated? gameboard (moles)', gameBoard); // is updating, but not showing the update here
     }
   }
 
@@ -98,4 +99,15 @@ function pickAMoleToShow(totalMoles, excludedNumber = -1) {
     pickANumber = Math.floor(Math.random() * (max - min + 1) + min);
   }
   return pickANumber;
+}
+
+function getMoleInterval(moleGenerationInterval) {
+  const min = Math.ceil(0);
+  const max = Math.floor(moleGenerationInterval);
+  let pickANumber = null; 
+  while(pickANumber === null) {
+    pickANumber = Math.floor(Math.random() * (max - min + 1) + min);
+  }
+  console.log('mole appearing next is... ', pickANumber);
+  return pickANumber
 }

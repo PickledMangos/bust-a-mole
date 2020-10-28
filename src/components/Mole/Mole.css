@@ -1,7 +1,13 @@
 .mole__hole-hidden {
-  
+    height:250px;
+    width:250px;
+    justify-content: center;
+    align-items: center;
 }
 
 .mole__hole-show {
-
+    height:250px;
+    width:250px;
+    justify-content: center;
+    align-items: center;
 }
