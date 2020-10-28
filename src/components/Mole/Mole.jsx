@@ -15,7 +15,7 @@ export const Mole = (props) => {
 
   const expireTimer = () => {
     // Mole is shown now, but needs to hide.
-    console.log("time: ", props.timer)
+    // console.log("time: ", props.timer)
     setIsHidden(true);
   };
 

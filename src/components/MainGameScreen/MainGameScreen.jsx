@@ -10,28 +10,21 @@ export const MainGameScreen = (props) => {
     const [moleInterval, setMoleInterval] = useState();
     const [gameBoard, setGameBoard] = useState(getAnArrayOfMoles(9));
 
-  // let moles = getAnArrayOfMoles(9, [score, setScore]);
-  // TODO: make timer work (ex. wait 5 seconds, then update moles
-  // moles = getAnArrayOfMoles(9, [score, setScore]);
-
-  function updateGameBoard (oldBoardState) {
-    const newGameBoard = setGameBoard(...oldBoardState);
-    return newGameBoard;
-  }
-
   const moleGenerationInterval = 5;
   const gameEndsInSeconds = 60;
 
   function tick() { // every second, this function is called
-    // updateGameBoard(gameBoard);
     console.log("tick!");
-    // setGameBoard()
-    // getAnArrayOfMoles(9, [score, setScore]);
+    if (seconds % 5 === 0 && seconds != 0) {
+      console.log('seconds divisible by 5: ', seconds);
+      console.log('current gameboard (moles)', gameBoard);
+      setGameBoard(getAnArrayOfMoles(9));
+      console.log('updated? gameboard (moles)', gameBoard); // is updating, but not showing the update here
+    }
   }
 
   useEffect(() => {
     let interval = null;
-    // setGameBoard(getAnArrayOfMoles);
     if (isActive) {
       interval = setInterval(() => {
         setSeconds(seconds => (seconds + 1));
@@ -39,13 +32,11 @@ export const MainGameScreen = (props) => {
       }, 1000)
     } else if ((!isActive && seconds !== 0)) {
       clearInterval(interval);
-      // setIsActive(false);
     }
     return () => {
       clearInterval(interval)
-      // setIsActive(false);
     }
-  }, [isActive, seconds])
+  }, [isActive, seconds]);
 
   return (
    <div className="MainGameScreen">
