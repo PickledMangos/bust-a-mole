@@ -19,6 +19,12 @@
 
 .GameOver {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
+}
+
+.GameOver__Button {
+  padding: 5px;
+  margin-top: 15px;
 }

@@ -10,7 +10,7 @@ export const MainGameScreen = (props) => {
   const [gameBoard, setGameBoard] = useState(getAnArrayOfMoles(9));
 
   const moleGenerationSecondsInterval = 2;
-  const gameEndsInSeconds = 60;
+  const gameEndsInSeconds = 10;
 
   function tick() { 
     if (seconds % moleGenerationSecondsInterval === 0 && seconds !== 0) {
@@ -43,7 +43,9 @@ export const MainGameScreen = (props) => {
 
   const replayHandler = () => {
     console.log('button clicked');
+    window.location.reload(true);
   };
+
   return (
    <div className="MainGameScreen">
      <div className="MainGameScreen__Timer">Seconds: {seconds}</div>
@@ -59,9 +61,9 @@ export const MainGameScreen = (props) => {
                   isHidden={mole.isHidden} 
                 />)}) 
           : <div className="GameOver">
-              <p>Game over, man...</p>
+              <div>Game over, man...</div>
                 {/* <button className="GameOver__Button" onClick={reload()}>Play Again</button> */}
-                <button className="GameOver__Button" onClick={replayHandler}>Play Again</button>
+              <button className="GameOver__Button" onClick={replayHandler}>Play Again</button>
             </div>
         }
       </div>
