@@ -17,8 +17,9 @@ function App() {
     const timer = { time: 0 }
 
     const handleStartGame = () => {
+      if (!isGameStart) {
         setIsGameStart(true);
-        // TODO: start the timer too
+      }
     };
 
     const handleScoreKeeping = () => {
@@ -29,8 +30,13 @@ function App() {
     <div className="App">
       <TimerContext.Provider value={timer}>
         <Header score={score} ></Header>
-        <div className="StartGameButton" onClick={handleStartGame}>
-            {!isGameStart ? <StartGameScreen /> : <MainGameScreen score={[score, setScore]}/>}
+        <div className="StartGameButton" onClick={handleStartGame}> 
+            {!isGameStart 
+             ? <StartGameScreen /> 
+             : <MainGameScreen 
+                score={[score, setScore]}
+                isActive={[isGameStart, setIsGameStart]}
+              />}
         </div>
       </TimerContext.Provider>
     </div>

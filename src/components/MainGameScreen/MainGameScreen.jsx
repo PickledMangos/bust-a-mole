@@ -7,9 +7,10 @@ export const MainGameScreen = (props) => {
   const gameEndsInSeconds = 60;
 
   const [score, setScore] = props.score;
+  const [isGameStart, setIsGameStart] = props.isActive;
   
   const [seconds, setSeconds] = useState(0);
-  const [isActive, setIsActive] = useState(true)
+  // const [isActive, setIsActive] = useState(true);
   const [moleInterval, setMoleInterval] = useState(getMoleInterval(moleGenerationInterval));
   const [gameBoard, setGameBoard] = useState(getAnArrayOfMoles(9));
 
@@ -23,8 +24,8 @@ export const MainGameScreen = (props) => {
       setMoleInterval(getMoleInterval(moleGenerationInterval));
 
       // Reset gameboard and display, though this may be causing a memory leak
-      setIsActive(false);
-      setIsActive(true);
+      // setIsActive(false);
+      // setIsActive(true);
     }
   }
 
@@ -32,28 +33,27 @@ export const MainGameScreen = (props) => {
     let interval = null;
     
     if (seconds >= gameEndsInSeconds) {
-      setIsActive(false);
+      setIsGameStart(false);
     }
 
-    if (isActive) {
+    if (isGameStart) {
       interval = setInterval(() => {
         setSeconds(seconds => (seconds + 1));
         tick();
       }, 1000)
-    } else if ((!isActive && seconds !== 0)) {
+    } else if ((!isGameStart && seconds !== 0)) {
       clearInterval(interval);
     }
     return () => {
       clearInterval(interval)
     }
-  }, [isActive, seconds]);
+  }, [isGameStart, seconds]);
 
   return (
    <div className="MainGameScreen">
      <div>Seconds: {seconds}</div>
       <div className="game__field">
-        {isActive 
-          ? gameBoard.map((mole, key) => {
+          {gameBoard.map((mole, key) => {
               return (
                 <Mole 
                   key={key} 
@@ -62,11 +62,8 @@ export const MainGameScreen = (props) => {
                   timer={mole.timer} 
                   isHidden={mole.isHidden} 
                 /> 
-              )
+              )})
           }
-            ) // closes map 
-              : "Game Over, man"
-        }
       </div>
    </div>
   );
