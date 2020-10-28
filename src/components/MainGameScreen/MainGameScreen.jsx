@@ -11,11 +11,11 @@ export const MainGameScreen = (props) => {
     const [gameBoard, setGameBoard] = useState(getAnArrayOfMoles(9));
 
   const moleGenerationInterval = 5;
-  const gameEndsInSeconds = 60;
+  const gameEndsInSeconds = 10;
 
   function tick() { // every second, this function is called
     console.log("tick!");
-    if (seconds % 5 === 0 && seconds != 0) {
+    if (seconds % 5 === 0 && seconds !== 0) {
       console.log('seconds divisible by 5: ', seconds);
       console.log('current gameboard (moles)', gameBoard);
       setGameBoard(getAnArrayOfMoles(9));
@@ -25,6 +25,11 @@ export const MainGameScreen = (props) => {
 
   useEffect(() => {
     let interval = null;
+    
+    if (seconds >= gameEndsInSeconds) {
+      setIsActive(false);
+    }
+
     if (isActive) {
       interval = setInterval(() => {
         setSeconds(seconds => (seconds + 1));
