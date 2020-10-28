@@ -1,23 +1,38 @@
-import logo from './logo.svg';
+import React, { useState, useReducer } from "react";
+import { Header } from './components/Header/Header.jsx';
+import { StartGameScreen } from "./components/StartGameScreen/StartGameScreen.jsx";
+import { MainGameScreen } from "./components/MainGameScreen/MainGameScreen.jsx";
+import TimerContext from './components/Timer/Timer';
 import './App.css';
 
+function reducer (state, item) {
+  return [...state, item]
+}
+
 function App() {
+
+    const [isGameStart, setIsGameStart] = useState(false);
+    const [score, setScore] = useState(0);
+
+    const timer = { time: 0 }
+
+    const handleStartGame = () => {
+        setIsGameStart(true);
+        // TODO: start the timer too
+    };
+
+    const handleScoreKeeping = () => {
+      setScore(score + 1);
+    }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <TimerContext.Provider value={timer}>
+        <Header score={score} ></Header>
+        <div className="StartGameButton" onClick={handleStartGame}>
+            {!isGameStart ? <StartGameScreen /> : <MainGameScreen score={[score, setScore]}/>}
+        </div>
+      </TimerContext.Provider>
     </div>
   );
 }
