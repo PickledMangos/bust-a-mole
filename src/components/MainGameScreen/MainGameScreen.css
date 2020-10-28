@@ -2,6 +2,13 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 10px;
+  -webkit-user-select: none;
+  -moz-user-select: none; 
+  -ms-user-select: none; 
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none; 
 }
 
 .MainGameScreen {
@@ -13,6 +20,186 @@
   max-width: 100vw;
 }
 
+.MainGameScreen__Timer {
+  margin: 1rem;
+}
+
+.GameOver {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.GameOver__Button {
+  padding: 5px;
+  margin-top: 15px;
+}
+.MainGameScreen__Timer {
+  margin: 1rem;
+}
+
+.GameOver {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.GameOver__Button {
+  padding: 5px;
+  margin-top: 15px;
+}
+.MainGameScreen__Timer {
+  margin: 1rem;
+}
+
+.GameOver {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.GameOver__Button {
+  padding: 5px;
+  margin-top: 15px;
+}
+.MainGameScreen__Timer {
+  margin: 1rem;
+}
+
+.GameOver {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.GameOver__Button {
+  padding: 5px;
+  margin-top: 15px;
+}
+.MainGameScreen__Timer {
+  margin: 1rem;
+}
+
+.GameOver {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.GameOver__Button {
+  padding: 5px;
+  margin-top: 15px;
+}
+.MainGameScreen__Timer {
+  margin: 1rem;
+}
+
+.GameOver {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.GameOver__Button {
+  padding: 5px;
+  margin-top: 15px;
+}
+.MainGameScreen__Timer {
+  margin: 1rem;
+}
+
+.GameOver {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.GameOver__Button {
+  padding: 5px;
+  margin-top: 15px;
+}
+.MainGameScreen__Timer {
+  margin: 1rem;
+}
+
+.GameOver {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.GameOver__Button {
+  padding: 5px;
+  margin-top: 15px;
+}
+.MainGameScreen__Timer {
+  margin: 1rem;
+}
+
+.GameOver {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.GameOver__Button {
+  padding: 5px;
+  margin-top: 15px;
+}
+.MainGameScreen__Timer {
+  margin: 1rem;
+}
+
+.GameOver {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.GameOver__Button {
+  padding: 5px;
+  margin-top: 15px;
+}
+.MainGameScreen__Timer {
+  margin: 1rem;
+}
+
+.GameOver {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.GameOver__Button {
+  padding: 5px;
+  margin-top: 15px;
+}
+.MainGameScreen__Timer {
+  margin: 1rem;
+}
+
+.GameOver {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.GameOver__Button {
+  padding: 5px;
+  margin-top: 15px;
+}
 .MainGameScreen__Timer {
   margin: 1rem;
 }

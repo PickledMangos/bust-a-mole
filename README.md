@@ -1,3 +1,12 @@
+# Bust-A-Mole
+fuzzypickles.xyz
+
+## Project Authors
+ * Zack Kramer
+ * Diana McIntosh
+
+___
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
