@@ -12,3 +12,19 @@
   max-height: 100vh;
   max-width: 100vw;
 }
+
+.MainGameScreen__Timer {
+  margin: 1rem;
+}
+
+.GameOver {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.GameOver__Button {
+  padding: 5px;
+  margin-top: 15px;
+}
