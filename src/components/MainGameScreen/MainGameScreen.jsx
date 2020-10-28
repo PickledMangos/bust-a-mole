@@ -10,7 +10,7 @@ export const MainGameScreen = (props) => {
   const [gameBoard, setGameBoard] = useState(getAnArrayOfMoles(9));
 
   const moleGenerationSecondsInterval = 2;
-  const gameEndsInSeconds = 10;
+  const gameEndsInSeconds = 60;
 
   function tick() { 
     if (seconds % moleGenerationSecondsInterval === 0 && seconds !== 0) {
