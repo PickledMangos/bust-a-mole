@@ -5,12 +5,12 @@ import './MainGameScreen.css';
 export const MainGameScreen = (props) => {
   const [score, setScore] = props.score;
   
-  const [seconds, setSeconds] = useState(0);
-  const [isActive, setIsActive] = useState(true)
-  const [moleInterval, setMoleInterval] = useState();
-  const [gameBoard, setGameBoard] = useState([]);
+    const [seconds, setSeconds] = useState(0);
+    const [isActive, setIsActive] = useState(true)
+    const [moleInterval, setMoleInterval] = useState();
+    const [gameBoard, setGameBoard] = useState(getAnArrayOfMoles(9));
 
-  let moles = getAnArrayOfMoles(9, [score, setScore]);
+  // let moles = getAnArrayOfMoles(9, [score, setScore]);
   // TODO: make timer work (ex. wait 5 seconds, then update moles
   // moles = getAnArrayOfMoles(9, [score, setScore]);
 
@@ -19,27 +19,19 @@ export const MainGameScreen = (props) => {
     return newGameBoard;
   }
 
-  function toggle() { // basic toggle switch for pause / start
-    setIsActive(!isActive);
-  }
-
-  function reset() { // add more functionality for game board reset
-    setSeconds(0);
-    setIsActive(false);
-  }
-
   const moleGenerationInterval = 5;
   const gameEndsInSeconds = 60;
 
   function tick() { // every second, this function is called
-    updateGameBoard(gameBoard);
+    // updateGameBoard(gameBoard);
     console.log("tick!");
+    // setGameBoard()
     // getAnArrayOfMoles(9, [score, setScore]);
   }
 
   useEffect(() => {
     let interval = null;
-    setGameBoard(moles);
+    // setGameBoard(getAnArrayOfMoles);
     if (isActive) {
       interval = setInterval(() => {
         setSeconds(seconds => (seconds + 1));
@@ -79,7 +71,7 @@ export const MainGameScreen = (props) => {
   );
 };
 
-function getAnArrayOfMoles (numOfHoles, [score, setScore]) {
+function getAnArrayOfMoles (numOfHoles) {
   const moleShown = {
     isHidden: false,
     timer: 3000
@@ -88,7 +80,7 @@ function getAnArrayOfMoles (numOfHoles, [score, setScore]) {
     isHidden: true,
     timer: null
   };
-  const molesArray = [];
+  let molesArray = [];
   const showMoleIndex = pickAMoleToShow(numOfHoles);
 
   for (let i = 0; i < numOfHoles; i++) {
