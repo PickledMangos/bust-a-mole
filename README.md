@@ -1,5 +1,5 @@
 # Bust-A-Mole
-fuzzypickles.xyz
+http://fuzzypickles.xyz
 
 ## Project Authors
  * Zack Kramer
