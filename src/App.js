@@ -22,10 +22,6 @@ function App() {
       }
     };
 
-    const handleScoreKeeping = () => {
-      setScore(score + 1);
-    }
-
   return (
     <div className="App">
       <TimerContext.Provider value={timer}>
