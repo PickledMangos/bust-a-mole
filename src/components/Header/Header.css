@@ -5,4 +5,15 @@
   justify-content: space-evenly;
   background-color: darkblue;
   height: 2.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+@media only screen and (max-width: 599px) {
+  .Header {
+    flex-direction: column;
+    font-size: small;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+  }
 }

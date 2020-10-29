@@ -20,13 +20,11 @@ export const Mole = (props) => {
   setTimeout(expireTimer, props.timer)
 
   return (
-      <div className="mole" >
-          <div className={`mole__hole${isHidden ? '-hidden' : '-show'}`} onClick={clickHandler} >
-              <img src={isHidden ? moleHole : moleImage} 
-                   alt='mole'
-                   draggable={false}
-              ></img>
-          </div>
+      <div className="mole" onClick={clickHandler} >
+        <img src={isHidden ? moleHole : moleImage} 
+          alt='mole'
+          draggable={false}
+        ></img>
       </div>
   );
 };

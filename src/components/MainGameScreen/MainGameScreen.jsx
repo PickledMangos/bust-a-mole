@@ -42,7 +42,6 @@ export const MainGameScreen = (props) => {
   }, [isActive, seconds]);
 
   const replayHandler = () => {
-    console.log('button clicked');
     window.location.reload(true);
   };
 
@@ -62,7 +61,6 @@ export const MainGameScreen = (props) => {
                 />)}) 
           : <div className="GameOver">
               <div>Game over, man...</div>
-                {/* <button className="GameOver__Button" onClick={reload()}>Play Again</button> */}
               <button className="GameOver__Button" onClick={replayHandler}>Play Again</button>
             </div>
         }
