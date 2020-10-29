@@ -48,6 +48,13 @@ export const MainGameScreen = (props) => {
   return (
    <div className="MainGameScreen">
      <div className="MainGameScreen__Timer">Seconds: {seconds}</div>
+     {!isActive ? 
+      <div className="GameOver">
+        <div>Game over, man...</div>
+        <button className="GameOver__Button" onClick={replayHandler}>Play Again</button>
+      </div>
+        : "" 
+      }
       <div className="game__field">
         {isActive 
           ? gameBoard.map((mole, key) => {
@@ -59,10 +66,7 @@ export const MainGameScreen = (props) => {
                   timer={mole.timer} 
                   isHidden={mole.isHidden} 
                 />)}) 
-          : <div className="GameOver">
-              <div>Game over, man...</div>
-              <button className="GameOver__Button" onClick={replayHandler}>Play Again</button>
-            </div>
+          : ""
         }
       </div>
    </div>

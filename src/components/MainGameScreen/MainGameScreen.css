@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Turret+Road:wght@500&display=swap');
+
 .game__field {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -16,11 +18,16 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  margin-top: 2rem;
 }
 
 .GameOver__Button {
-  padding: 5px;
-  margin-top: 15px;
+  padding: .5rem;
+  margin-top: 2.5rem;
+  font-family: 'Turret Road';
+  width: 9rem;
+  background-color: darkblue;
+  color: gainsboro;
 }
 
 .MainGameScreen {
