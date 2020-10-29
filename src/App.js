@@ -15,7 +15,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header score={score} ></Header>
+      <Header score={score} />
       <div className="StartGameButton" onClick={handleStartGame}>
           {!isGameStart ? <StartGameScreen /> : <MainGameScreen score={[score, setScore]}/>}
       </div>
